@@ -1,7 +1,5 @@
 package com.lm.web.controller;
 
-import java.util.Map;
-
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +14,6 @@ import com.lm.web.service.UserService;
 import com.lm.web.service.UserTokenService;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.result.Ret;
-
-
 
 /**
  * 
@@ -49,7 +45,7 @@ public class LoginController extends AbstractController {
 	 * @throws 异常
 	 */
 	@RequestMapping(value = "/sys/login", method = RequestMethod.POST)
-	public Map<String, Object> login(@RequestBody LoginVO login) {
+	public Ret login(LoginVO login) {
 		String code = CommConstant.GWSCOD0000;
 		String message = CommConstant.GWSMSG0000;
 		Long startTime = System.currentTimeMillis();
