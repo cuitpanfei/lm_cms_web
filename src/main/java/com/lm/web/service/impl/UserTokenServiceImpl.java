@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lm.web.configuration.oauth.TokenGenerator;
 import com.lm.web.entity.po.UserToken;
 import com.lm.web.repository.dao.UserTokenRepositoryDao;
 import com.lm.web.service.UserTokenService;
@@ -29,8 +30,7 @@ public class UserTokenServiceImpl implements UserTokenService{
 	@Override
 	public Ret createToken(Long userId) {
 		//生成token
-		//String token = TokenGenerator.generateValue();
-		String token = null;
+		String token = TokenGenerator.generateValue();
 		
 		//过期时间
 		Date expireTime = new Date(new Date().getTime() + EXPIRE * 1000);
@@ -38,11 +38,12 @@ public class UserTokenServiceImpl implements UserTokenService{
 		//判断是否生成token
 		UserToken userToken = userTokenRepositoryDao.findOne(userId);
 		if(userToken == null){
-			userToken.setUserId(userId);
-			userToken.setToken(token);
-			userToken.setExpireTime(expireTime);
-			userToken.setUpdateTime(new Date());
-			userTokenRepositoryDao.save(userToken);
+			UserToken newUserToken = new UserToken();
+			newUserToken.setUserId(userId);
+			newUserToken.setToken(token);
+			newUserToken.setExpireTime(expireTime);
+			newUserToken.setUpdateTime(new Date());
+			userTokenRepositoryDao.save(newUserToken);
 		}else{
 			userToken.setToken(token);
 			userToken.setUpdateTime(new Date());
