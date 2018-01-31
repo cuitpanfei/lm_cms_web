@@ -2,7 +2,6 @@ package com.lm.web.controller;
 
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,14 +51,9 @@ public class LoginController extends AbstractController {
 		GwsLogger.info("用户登录开始:code={},message={},startTime={}", code, message, startTime);
 		
 		User user = userService.queryByUserName(login.getUsername());
-		// 账号不存在、密码错误
-		Sha256Hash sha256 = new Sha256Hash(login.getPassword(), user.getSalt());
-		String pwd = sha256.toHex();
-//		if (user == null || !user.getPassword().equals(new Sha256Hash(login.getPassword(), user.getSalt()).toHex())) {
-//			return Ret.error("账号或密码不正确");
-//		}
 		
-		if (user == null || !user.getPassword().equals(pwd)) {
+		// 账号不存在、密码错误
+		if (user == null || !user.getPassword().equals(new Sha256Hash(login.getPassword(), user.getSalt()).toHex())) {
 			return Ret.error("账号或密码不正确");
 		}
 		
