@@ -53,14 +53,20 @@ public class LoginController extends AbstractController {
 		
 		User user = userService.queryByUserName(login.getUsername());
 		// 账号不存在、密码错误
+		Sha256Hash sha256 = new Sha256Hash(login.getPassword(), user.getSalt());
+		String pwd = sha256.toHex();
 //		if (user == null || !user.getPassword().equals(new Sha256Hash(login.getPassword(), user.getSalt()).toHex())) {
 //			return Ret.error("账号或密码不正确");
 //		}
-
+		
+		if (user == null || !user.getPassword().equals(pwd)) {
+			return Ret.error("账号或密码不正确");
+		}
+		
 		// 账号锁定
-//		if (user.getStatus() == 0) {
-//			return Ret.error("账号已被锁定,请联系管理员");
-//		}
+		if (user.getStatus() == 0) {
+			return Ret.error("账号已被锁定,请联系管理员");
+		}
 		
 		Ret r = null;
 		try{
@@ -101,7 +107,7 @@ public class LoginController extends AbstractController {
 		}
 
 		GwsLogger.info("退出系统结束:code={},message={}", code, message);
-		return INDEX;
+		return null;
 	}
 
 }

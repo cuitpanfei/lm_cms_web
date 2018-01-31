@@ -1,6 +1,7 @@
 package com.lm.web.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -16,6 +17,7 @@ import com.lm.web.configuration.log.GwsLogger;
 import com.lm.web.entity.po.Menu;
 import com.lm.web.enums.MenuTypeEnum;
 import com.lm.web.service.MenuService;
+import com.lm.web.service.ShiroService;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.exception.RRException;
 import com.lm.web.tools.result.Ret;
@@ -35,6 +37,8 @@ public class MenuController extends AbstractController{
 	
 	@Autowired
 	private MenuService menuService;
+	@Autowired
+	private ShiroService shiroService;
 	
 	
 	/**
@@ -52,7 +56,9 @@ public class MenuController extends AbstractController{
 		GwsLogger.info("菜单导航操作开始:code={},message={}", code, message);
 
 		List<Menu> meunList = null;
+		Set<String> permissions = null;
 		try {
+			permissions = shiroService.getUserPermissions(getUserId());
 			meunList = menuService.getUserMenuList(getUserId());
 		} catch (Exception e) {
 			code = CommConstant.GWSCOD0001;
@@ -62,7 +68,7 @@ public class MenuController extends AbstractController{
 		}
 
 		GwsLogger.info("菜单导航操作结束:code={},message={}", code, message);
-		return Ret.ok().put("menuList", meunList);
+		return Ret.ok().put("menuList", meunList).put("permissions", permissions);
 	}
 	
 	
