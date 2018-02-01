@@ -30,7 +30,15 @@ public class LoginController extends AbstractController {
 	@Autowired
 	UserTokenService userTokenService;
 	
-
+	
+	//默认登录页面
+	@RequestMapping(value = "loginPage", method = RequestMethod.GET)
+	public String loginPage(){
+		System.out.println("index");
+		return "index";
+	}
+	
+	
 	/**
 	 * 
 	 * 【用户登录】
