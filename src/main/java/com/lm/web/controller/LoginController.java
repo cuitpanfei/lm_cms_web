@@ -30,15 +30,7 @@ public class LoginController extends AbstractController {
 	@Autowired
 	UserTokenService userTokenService;
 	
-	
-	//默认登录页面
-	@RequestMapping(value = "loginPage", method = RequestMethod.GET)
-	public String loginPage(){
-		System.out.println("index");
-		return "index";
-	}
-	
-	
+
 	/**
 	 * 
 	 * 【用户登录】
@@ -59,6 +51,10 @@ public class LoginController extends AbstractController {
 		GwsLogger.info("用户登录开始:code={},message={},startTime={}", code, message, startTime);
 		
 		User user = userService.queryByUserName(login.getUsername());
+		
+		Sha256Hash sha = new Sha256Hash(login.getPassword(), user.getSalt());
+		String pw = sha.toHex();
+		System.out.println(pw);
 		
 		// 账号不存在、密码错误
 		if (user == null || !user.getPassword().equals(new Sha256Hash(login.getPassword(), user.getSalt()).toHex())) {
