@@ -10,7 +10,7 @@ public class PageController {
 	@RequestMapping(value = "/loginPage")
 	public String loginPage() {
 		System.out.println("index");
-		return "index";
+		return "login";
 	}
 
 }
