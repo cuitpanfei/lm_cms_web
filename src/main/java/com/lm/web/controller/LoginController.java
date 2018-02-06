@@ -11,6 +11,7 @@ import com.lm.web.entity.po.User;
 import com.lm.web.entity.vo.LoginVO;
 import com.lm.web.service.UserService;
 import com.lm.web.service.UserTokenService;
+import com.lm.web.tools.base.BaseController;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.result.Ret;
 
@@ -24,7 +25,7 @@ import com.lm.web.tools.result.Ret;
  */
 
 @RestController
-public class LoginController extends AbstractController {
+public class LoginController extends BaseController {
 	@Autowired
 	UserService userService;
 	@Autowired

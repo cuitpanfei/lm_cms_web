@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lm.web.configuration.log.GwsLogger;
 import com.lm.web.entity.po.Dept;
 import com.lm.web.service.DeptService;
+import com.lm.web.tools.base.BaseController;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.constant.Constant;
 import com.lm.web.tools.result.Ret;
@@ -27,7 +28,7 @@ import com.lm.web.tools.result.Ret;
  */
 @RestController
 @RequestMapping("/sys/dept")
-public class DeptController extends AbstractController {
+public class DeptController extends BaseController {
 
 	@Autowired
 	private DeptService deptService;

@@ -1,4 +1,4 @@
-package com.lm.web.controller;
+package com.lm.web.tools.base;
 
 import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ import com.lm.web.entity.po.User;
  * @date 2018年1月6日 下午2:46:33
  */
 
-public abstract class AbstractController {
+public abstract class BaseController {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
 

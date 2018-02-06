@@ -17,6 +17,7 @@ import com.lm.web.entity.vo.RoleVO;
 import com.lm.web.service.DeptRoleService;
 import com.lm.web.service.MenuRoleService;
 import com.lm.web.service.RoleService;
+import com.lm.web.tools.base.BaseController;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.result.Ret;
 import com.lm.web.tools.validator.ValidatorUtils;
@@ -31,7 +32,7 @@ import com.lm.web.tools.validator.ValidatorUtils;
  */
 @RestController
 @RequestMapping("/sys/role")
-public class RoleController extends AbstractController{
+public class RoleController extends BaseController{
 	
 	@Autowired
 	private RoleService roleService;

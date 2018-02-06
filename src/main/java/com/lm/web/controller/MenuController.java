@@ -18,6 +18,7 @@ import com.lm.web.entity.po.Menu;
 import com.lm.web.enums.MenuTypeEnum;
 import com.lm.web.service.MenuService;
 import com.lm.web.service.ShiroService;
+import com.lm.web.tools.base.BaseController;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.exception.RRException;
 import com.lm.web.tools.result.Ret;
@@ -33,7 +34,7 @@ import com.lm.web.tools.result.Ret;
 
 @RestController
 @RequestMapping("/sys/menu")
-public class MenuController extends AbstractController{
+public class MenuController extends BaseController{
 	
 	@Autowired
 	private MenuService menuService;

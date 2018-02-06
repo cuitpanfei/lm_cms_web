@@ -18,6 +18,7 @@ import com.lm.web.entity.vo.UserVO;
 import com.lm.web.enums.UserTypeEnum;
 import com.lm.web.service.UserRoleService;
 import com.lm.web.service.UserService;
+import com.lm.web.tools.base.BaseController;
 import com.lm.web.tools.constant.CommConstant;
 import com.lm.web.tools.result.Ret;
 import com.lm.web.tools.validator.ValidatorUtils;
@@ -35,7 +36,7 @@ import com.lm.web.tools.validator.group.UpdateGroup;
  */
 @RestController
 @RequestMapping("/sys/user")
-public class UserController extends AbstractController{
+public class UserController extends BaseController{
 	
 	@Autowired
 	private UserService userService;
