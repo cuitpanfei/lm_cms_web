@@ -56,10 +56,17 @@ public class ShiroServiceImpl implements ShiroService {
 			//将集合中的数据按,号分割，并转成数组存入HashSet中
 			permsSet.addAll(Arrays.asList(perms.trim().split(",")));
 		}
-		
 		return permsSet;
 	}
-
+	
+	
+	@Override
+	public Set<Menu> getUserAuthoritys(Long userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 	@Override
 	public UserToken queryByToken(String token) {
 		return userTokenRepositoryDao.queryByToken(token);
@@ -69,6 +76,6 @@ public class ShiroServiceImpl implements ShiroService {
 	public User queryUser(Long userId) {
 		return userRepositoryDao.findOne(userId);
 	}
-	
+
 	
 }

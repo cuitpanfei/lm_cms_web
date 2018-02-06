@@ -42,6 +42,18 @@ public interface MenuService {
 	
 	/**
 	 * 
+	 *【根据用户 ID查询所有菜单实体集合】 
+	 * @param userId
+	 * @return List<Menu>返回类型   
+	 * @author ShenZiYang
+	 * @date 2018年2月6日上午11:42:36
+	 * @throws 异常
+	 */
+	List<Menu> findAllMenu(Long userId);
+	
+	
+	/**
+	 * 
 	 * (根据父菜单，查询子菜单) 
 	 * @Title queryListParentId 
 	 * @param parentId

@@ -3,6 +3,7 @@ package com.lm.web.service;
 
 import java.util.Set;
 
+import com.lm.web.entity.po.Menu;
 import com.lm.web.entity.po.User;
 import com.lm.web.entity.po.UserToken;
 
@@ -24,7 +25,20 @@ public interface ShiroService {
 	 * @throws 异常
 	 */
     Set<String> getUserPermissions(Long userId);
+  
     
+    /**
+     * 
+     *【根据用户ID获取菜单实体】 
+     * @param userId
+     * @return Set<Menu>返回类型   
+     * @author ShenZiYang
+     * @date 2018年2月6日上午11:11:22
+     * @throws 异常
+     */
+    Set<Menu> getUserAuthoritys(Long userId);
+    
+ 
     /**
      * 
      *【根据token获取用户token】 
