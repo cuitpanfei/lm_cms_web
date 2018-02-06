@@ -26,6 +26,7 @@ public abstract class AbstractController {
 	
 	//获取用户Id
 	protected Long getUserId() {
+		logger.info("当前登录用户ID为:"+getUser().getUserId());
 		return getUser().getUserId();
 	}
 	
