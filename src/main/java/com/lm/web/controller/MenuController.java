@@ -72,10 +72,7 @@ public class MenuController extends BaseController{
 		return Ret.ok().put("menuList", meunList).put("permissions", permissions);
 	}
 	
-	//返回参数封装
-	
-	
-	
+
 	
 	/**
 	 * 
